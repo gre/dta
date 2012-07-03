@@ -1,0 +1,30 @@
+@(title: String)(headContent: Html)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/underscore-min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/backbone-min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jsfx/audio.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jsfx/jsfx.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jsfx/jsfxlib.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.at("javascripts/threejs/Three.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/threejs/ShaderExtras.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/threejs/EffectComposer.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/threejs/RenderPass.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/threejs/TexturePass.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/threejs/ShaderPass.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/threejs/MaskPass.js")" type="text/javascript"></script>
+
+        @headContent
+    </head>
+    <body>
+        @content
+    </body>
+</html>

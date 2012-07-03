@@ -1,0 +1,68 @@
+@(env: Game)
+
+@main("Drone Tank Arena") {
+  <link href='http://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/utils.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/core.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/audio.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/LifeIndicator.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/Radar.min.js")"></script>
+} {
+<div id="wrapper">
+  <header>
+    <h1>Drone Tank Arena</h1>
+  </header>
+  <div id="game">
+    <canvas width="50" height="50" id="radar"></canvas>
+    <canvas width="24" height="36" id="life_indicator"></canvas>
+    <span id="level">0</span>
+    <span id="message">WebGL is required. Please use a recent stable browser (Firefox, Chrome)</span>
+  </div>
+
+  <div>
+    <input type="checkbox" id="audio" checked="checked" /> <label for="audio">Audio</label>
+    <input type="checkbox" id="effects" checked="checked" /> <label for="effects">Effects</label>
+  </div>
+</div>
+
+<div id="help">
+  <h2>Help</h2>
+  <dl>
+    <dt>Your mission</dt>
+    <dd>Kill tanks.</dd>
+    <dd>Gain levels.</dd>
+    <dd>Don't be killed.</dd>
+  </dl>
+  <dl>
+    <dt>Controls:</dt>
+    <dd><code>Arrows</code> (or <code>WSAD</code>) for moving</dd>
+    <dd><code>Ctrl</code> or <code>C</code> or <code>C</code> for shooting</dd>
+    <dd><code>Space</code> for missile</dd>
+  </dl>
+</div>
+
+<div>
+  <h2>Known issues</h2>
+  <ul>
+    <li>The sound effects may freeze your browser especially Chrome. It uses an experimental library called JSFX.</li>
+    <li>The GLSL effects may not work in Chrome Canary (the Chrome dev version), use Chrome stable.</li>
+    <li>The game mays not work on Firefox (works on FF Mac / don't work on FF Linux)</li>
+  </ul>
+</div>
+
+  <footer>
+    a <a href="http://7dfps.org">7DFPS</a> entry - 2012 - <a href="http://twitter.com/greweb">@@greweb</a>
+  </footer>
+
+  <script type="text/javascript">
+  window.WIDTH = 800;
+  window.HEIGHT = 600;
+  window.GAME = new Game(@Html(env.json.toString));
+  if (( function () { try { return !! window.WebGLRenderingContext && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' ); } catch( e ) { return false; } } )()) {
+    $('#message').empty().hide();
+  }
+
+  </script>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/main.min.js")"></script>
+  @*<script type="text/javascript" src="@routes.Assets.at("javascripts/websockets.js")"></script>*@
+}
