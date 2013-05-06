@@ -3,18 +3,17 @@ body {
   color: #afa;
   font-size: 20px;
 }
-
 header {
   text-align: center;
   padding: 5px 0;
   color: #0F0;
 }
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 2px 0;
   font-family: 'Black Ops One';
 }
-
 #help {
   padding: 10px;
   width: 600px;
@@ -22,49 +21,41 @@ h1, h2, h3 {
   color: #000;
   background: #080;
 }
-
 footer {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
 }
-
 a {
   color: #3f3;
-    text-decoration: none;
+  text-decoration: none;
 }
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
 dt {
   font-weight: bold;
 }
-
 #wrapper {
   width: 800px;
   margin: 0 auto;
 }
-
 #game {
   position: relative;
   min-height: 300px;
 }
-
 #life_indicator {
   position: absolute;
   z-index: 1;
   bottom: 10px;
   right: 10px;
 }
-
 #radar {
   position: absolute;
   z-index: 1;
   top: 10px;
   left: 10px;
 }
-
 #level {
   position: absolute;
   z-index: 1;
@@ -75,7 +66,6 @@ dt {
   font-family: monospace;
   font-weight: bold;
 }
-
 #message {
   position: absolute;
   top: 40%;

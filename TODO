@@ -1,6 +1,0 @@
-- make the server synchronisation
-- improve the collision performance using quadtrees technique
-- making better tank look
--make wall collision effect on one grid square : if a bullet become out of bound, find the related face
-- make more sounds
-  - bullet hit obstacle

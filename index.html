@@ -1,0 +1,98 @@
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Drone Tank Arena</title>
+        <link rel="stylesheet" media="screen" href="assets/stylesheets/main.css">
+        <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+        <script src="assets/javascripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="assets/javascripts/underscore-min.js" type="text/javascript"></script>
+        <script src="assets/javascripts/backbone-min.js" type="text/javascript"></script>
+        <script src="assets/javascripts/jsfx/audio.js" type="text/javascript"></script>
+        <script src="assets/javascripts/jsfx/jsfx.js" type="text/javascript"></script>
+        <script src="assets/javascripts/jsfx/jsfxlib.js" type="text/javascript"></script>
+
+        <script src="assets/javascripts/threejs/Three.js" type="text/javascript"></script>
+        <script src="assets/javascripts/threejs/ShaderExtras.js" type="text/javascript"></script>
+        <script src="assets/javascripts/threejs/EffectComposer.js" type="text/javascript"></script>
+        <script src="assets/javascripts/threejs/RenderPass.js" type="text/javascript"></script>
+        <script src="assets/javascripts/threejs/TexturePass.js" type="text/javascript"></script>
+        <script src="assets/javascripts/threejs/ShaderPass.js" type="text/javascript"></script>
+        <script src="assets/javascripts/threejs/MaskPass.js" type="text/javascript"></script>
+
+        
+  <link href='http://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="assets/javascripts/utils.min.js"></script>
+  <script type="text/javascript" src="assets/javascripts/core.min.js"></script>
+  <script type="text/javascript" src="assets/javascripts/audio.min.js"></script>
+  <script type="text/javascript" src="assets/javascripts/LifeIndicator.min.js"></script>
+  <script type="text/javascript" src="assets/javascripts/Radar.min.js"></script>
+
+    </head>
+    <body>
+        
+<div id="wrapper">
+  <header>
+    <h1>Drone Tank Arena</h1>
+  </header>
+  <div id="game">
+    <canvas width="50" height="50" id="radar"></canvas>
+    <canvas width="24" height="36" id="life_indicator"></canvas>
+    <span id="level">0</span>
+    <span id="message">WebGL is required. Please use a recent stable browser (Firefox, Chrome)</span>
+  </div>
+
+  <div>
+    <input type="checkbox" id="audio" checked="checked" /> <label for="audio">Audio</label>
+    <input type="checkbox" id="effects" checked="checked" /> <label for="effects">Effects</label>
+  </div>
+</div>
+
+<div id="help">
+  <h2>Help</h2>
+  <dl>
+    <dt>Your mission</dt>
+    <dd>Kill tanks.</dd>
+    <dd>Gain levels.</dd>
+    <dd>Don't be killed.</dd>
+  </dl>
+  <dl>
+    <dt>Controls:</dt>
+    <dd><code>Arrows</code> (or <code>WSAD</code>) for moving</dd>
+    <dd><code>Ctrl</code> or <code>C</code> or <code>C</code> for shooting</dd>
+    <dd><code>Space</code> for missile</dd>
+  </dl>
+</div>
+
+<div>
+  <h2>Known issues</h2>
+  <ul>
+    <li>The sound effects may freeze your browser especially Chrome. It uses an experimental library called JSFX.</li>
+    <li>The GLSL effects may not work in Chrome Canary (the Chrome dev version), use Chrome stable.</li>
+    <li>The game mays not work on Firefox (works on FF Mac / don't work on FF Linux)</li>
+  </ul>
+</div>
+
+  <footer>
+    a <a href="http://7dfps.org">7DFPS</a> entry - 2012 - <a href="http://twitter.com/greweb">@greweb</a>
+  </footer>
+
+  <script type="text/javascript">
+  window.WIDTH = 800;
+  window.HEIGHT = 600;
+  window.GAME = new Game({"boundMin":{"x":-5000.0,"y":-5000.0,"z":0.0},"boundMax":{"x":5000.0,"y":5000.0,"z":0.0},"objects":[{"position":{"x":-4782.0,"y":-3510.0,"z":0.0},"w":800.0,"h":1000.0},{"position":{"x":-4567.0,"y":-1195.0,"z":0.0},"w":400.0,"h":1400.0},{"position":{"x":-4034.0,"y":1181.0,"z":0.0},"w":1000.0,"h":800.0},{"position":{"x":-4019.0,"y":3048.0,"z":0.0},"w":1200.0,"h":600.0},{"position":{"x":-908.0,"y":-3845.0,"z":0.0},"w":200.0,"h":1600.0},{"position":{"x":-2147.0,"y":-2369.0,"z":0.0},"w":1600.0,"h":200.0},{"position":{"x":-1859.0,"y":1908.0,"z":0.0},"w":800.0,"h":1000.0},{"position":{"x":-2433.0,"y":4697.0,"z":0.0},"w":1600.0,"h":200.0},{"position":{"x":2340.0,"y":-2923.0,"z":0.0},"w":1200.0,"h":600.0},{"position":{"x":2442.0,"y":-1630.0,"z":0.0},"w":1200.0,"h":600.0},{"position":{"x":1488.0,"y":1613.0,"z":0.0},"w":800.0,"h":1000.0},{"position":{"x":340.0,"y":4712.0,"z":0.0},"w":1600.0,"h":200.0},{"position":{"x":4971.0,"y":-2557.0,"z":0.0},"w":1400.0,"h":400.0},{"position":{"x":3100.0,"y":-1936.0,"z":0.0},"w":800.0,"h":1000.0},{"position":{"x":3231.0,"y":754.0,"z":0.0},"w":400.0,"h":1400.0},{"position":{"x":2990.0,"y":3553.0,"z":0.0},"w":200.0,"h":1600.0}]});
+  if (( function () { try { return !! window.WebGLRenderingContext && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' ); } catch( e ) { return false; } } )()) {
+    $('#message').empty().hide();
+  }
+
+  </script>
+  <script type="text/javascript" src="assets/javascripts/main.min.js"></script>
+  
+
+    </body>
+</html>
+
